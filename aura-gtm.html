@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Aura — Calm Presence. Relentless Execution.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0c0c10;
+    --bg2: #111116;
+    --bg3: #17171e;
+    --border: rgba(255,255,255,0.08);
+    --border-hover: rgba(255,255,255,0.18);
+    --text: #f0ede6;
+    --text2: #9a9899;
+    --text3: #5a5860;
+    --gold: #c9a84c;
+    --gold-dim: rgba(201,168,76,0.15);
+    --gold-border: rgba(201,168,76,0.35);
+    --green: #34c777;
+    --green-bg: rgba(52,199,119,0.1);
+    --red: #e05c5c;
+    --red-bg: rgba(224,92,92,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+    border-bottom: 0.5px solid var(--border);
+    position: sticky;
+    top: 0;
+    background: rgba(12,12,16,0.92);
+    backdrop-filter: blur(12px);
+    z-index: 100;
+  }
+
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    color: var(--text);
+  }
+
+  .nav-logo span { color: var(--gold); }
+
+  .nav-badge {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold-border);
+    padding: 5px 14px;
+    border-radius: 100px;
+    background: var(--gold-dim);
+  }
+
+  .nav-cta {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 10px 24px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .nav-cta:hover { opacity: 0.8; }
+
+  /* HERO */
+  .hero {
+    padding: 100px 40px 80px;
+    text-align: center;
+    border-bottom: 0.5px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 600px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 0.5px solid var(--gold-border);
+    padding: 5px 14px;
+    border-radius: 100px;
+    margin-bottom: 36px;
+    background: var(--gold-dim);
+  }
+
+  .hero-tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 80px;
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: var(--text);
+    margin-bottom: 10px;
+  }
+
+  .hero-tagline span { color: var(--gold); }
+
+  .hero-sub-tagline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px;
+    letter-spacing: 0.16em;
+    color: var(--text3);
+    margin-bottom: 40px;
+    text-transform: uppercase;
+  }
+
+  .hero-divider {
+    width: 36px; height: 1px;
+    background: var(--gold);
+    margin: 0 auto 36px;
+    opacity: 0.5;
+  }
+
+  .hero-body {
+    font-size: 16px;
+    color: var(--text2);
+    max-width: 560px;
+    margin: 0 auto 48px;
+    font-weight: 300;
+    line-height: 1.85;
+  }
+
+  .hero-body strong { color: var(--text); font-weight: 500; }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+    border: none;
+    padding: 15px 36px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: opacity 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { opacity: 0.85; }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--text2);
+    border: 0.5px solid var(--border-hover);
+    padding: 15px 32px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--gold-border); color: var(--gold); }
+
+  /* STATS */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .stat-item {
+    padding: 36px 40px;
+    border-right: 0.5px solid var(--border);
+    text-align: center;
+  }
+  .stat-item:last-child { border-right: none; }
+
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-number span { color: var(--gold); }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* SECTIONS */
+  .section {
+    padding: 72px 40px;
+    border-bottom: 0.5px solid var(--border);
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-full {
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .section-full-inner {
+    padding: 72px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 22px;
+  }
+
+  .section-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.04em;
+    line-height: 1.0;
+    margin-bottom: 20px;
+    color: var(--text);
+  }
+
+  .section-body {
+    font-size: 15px;
+    color: var(--text2);
+    font-weight: 300;
+    line-height: 1.85;
+    max-width: 580px;
+  }
+  .section-body strong { color: var(--text); font-weight: 500; }
+
+  /* TERMINAL */
+  .terminal {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    margin-top: 40px;
+    overflow: hidden;
+    max-width: 680px;
+  }
+
+  .terminal-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 18px;
+    border-bottom: 0.5px solid var(--border);
+    background: var(--bg3);
+  }
+
+  .dot { width: 9px; height: 9px; border-radius: 50%; }
+  .dot-r { background: #ff5f57; }
+  .dot-y { background: #febc2e; }
+  .dot-g { background: #28c840; }
+  .terminal-label { font-size: 11px; color: var(--text3); letter-spacing: 0.08em; margin-left: 6px; }
+
+  .terminal-body {
+    padding: 24px 24px 28px;
+    font-family: 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 2.0;
+  }
+
+  .t-prompt { color: var(--gold); }
+  .t-text { color: var(--text); }
+  .t-dim { color: var(--text3); }
+  .t-check { color: #28c840; }
+  .t-agent { color: var(--text2); }
+  .t-flash { color: var(--gold); }
+
+  /* AGENTS GRID */
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .agent-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 18px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .agent-card:hover { border-color: var(--gold-border); background: var(--bg3); }
+
+  .agent-icon {
+    font-size: 22px;
+    margin-bottom: 12px;
+    color: var(--gold);
+    display: block;
+  }
+
+  .agent-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .agent-role {
+    font-size: 12px;
+    color: var(--text3);
+    font-weight: 300;
+    line-height: 1.55;
+  }
+
+  /* USE CASES */
+  .usecases-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .usecase-card {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    padding: 26px 22px;
+    transition: border-color 0.2s;
+  }
+  .usecase-card:hover { border-color: var(--gold-border); }
+
+  .usecase-tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 14px;
+  }
+
+  .usecase-headline {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+
+  .usecase-body {
+    font-size: 13px;
+    color: var(--text3);
+    font-weight: 300;
+    line-height: 1.65;
+    margin-bottom: 16px;
+  }
+
+  .usecase-saving {
+    font-size: 11.5px;
+    color: var(--green);
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* BEFORE / AFTER */
+  .compare-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 36px;
+  }
+
+  .compare-card {
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .compare-header {
+    padding: 13px 20px;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .compare-header.before { color: var(--red); background: var(--red-bg); }
+  .compare-header.after { color: var(--green); background: var(--green-bg); }
+
+  .compare-list {
+    padding: 18px 20px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .compare-list li {
+    font-size: 13.5px;
+    color: var(--text2);
+    font-weight: 300;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    line-height: 1.5;
+  }
+
+  .compare-list li .icon { flex-shrink: 0; margin-top: 2px; font-size: 14px; }
+  .before .compare-list li .icon { color: var(--red); }
+  .after .compare-list li .icon { color: var(--green); }
+
+  /* FEATURES */
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .feature-item {
+    padding: 22px 18px;
+    border: 0.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--bg2);
+    transition: border-color 0.2s;
+  }
+  .feature-item:hover { border-color: var(--gold-border); }
+
+  .feature-icon { font-size: 20px; color: var(--gold); margin-bottom: 14px; }
+  .feature-title { font-size: 13px; font-weight: 500; color: var(--text); margin-bottom: 7px; }
+  .feature-desc { font-size: 12px; color: var(--text3); font-weight: 300; line-height: 1.6; }
+
+  /* APPS */
+  .apps-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 28px;
+  }
+
+  .app-pill {
+    background: var(--bg3);
+    border: 0.5px solid var(--border);
+    border-radius: 100px;
+    padding: 7px 16px;
+    font-size: 12px;
+    color: var(--text2);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+    transition: border-color 0.2s;
+  }
+  .app-pill:hover { border-color: var(--gold-border); color: var(--gold); }
+
+  /* FINAL CTA */
+  .final-cta {
+    padding: 100px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(ellipse, rgba(201,168,76,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 64px;
+    letter-spacing: 0.05em;
+    color: var(--text);
+    line-height: 1.0;
+    margin-bottom: 14px;
+  }
+  .final-headline span { color: var(--gold); }
+
+  .final-sub {
+    font-size: 15px;
+    color: var(--text3);
+    font-weight: 300;
+    margin-bottom: 40px;
+    max-width: 460px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 0.5px solid var(--border);
+    padding: 24px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.12em;
+    color: var(--text3);
+  }
+  .footer-logo span { color: var(--gold); }
+
+  .footer-note {
+    font-size: 11px;
+    color: var(--text3);
+    font-weight: 300;
+    letter-spacing: 0.04em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tagline { animation: fadeUp 0.7s ease both; }
+  .hero-sub-tagline { animation: fadeUp 0.7s 0.1s ease both; }
+  .hero-body { animation: fadeUp 0.7s 0.2s ease both; }
+  .cta-row { animation: fadeUp 0.7s 0.3s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    nav { padding: 16px 20px; }
+    .nav-badge { display: none; }
+    .hero { padding: 72px 24px 60px; }
+    .hero-tagline { font-size: 52px; }
+    .section, .section-full-inner { padding: 52px 24px; }
+    .stat-row { grid-template-columns: 1fr; }
+    .stat-item { border-right: none; border-bottom: 0.5px solid var(--border); }
+    .stat-item:last-child { border-bottom: none; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .final-cta { padding: 72px 24px; }
+    .final-headline { font-size: 44px; }
+    footer { padding: 20px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Aura<span>.</span></div>
+  <div class="nav-badge">Early Access</div>
+  <a href="#cta" class="nav-cta">Request Access</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">Introducing Aura Agent</div>
+  <div class="hero-tagline">Calm presence.<br><span>Relentless</span> execution.</div>
+  <div class="hero-sub-tagline">AI that executes. Not assists. Not suggests. Not drafts.</div>
+  <div class="hero-divider"></div>
+  <p class="hero-body">
+    Just tell Aura what you need, and she <strong>instantly puts a team of AI agents to work</strong> across your apps and workflows. While you focus on the bigger picture, Aura handles the coordination, follow-ups, organization, and execution behind the scenes.<br><br>
+    No app juggling. No micromanaging. <strong>Just results.</strong>
+  </p>
+  <div class="cta-row">
+    <a href="#cta" class="btn-primary">Get early access →</a>
+    <a href="#how" class="btn-ghost">See how it works</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stat-row">
+  <div class="stat-item">
+    <div class="stat-number">60<span>×</span></div>
+    <div class="stat-label">Faster than doing it yourself</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number"><span>∞</span></div>
+    <div class="stat-label">Tabs you'll never switch between</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">500<span>+</span></div>
+    <div class="stat-label">Apps Aura connects to</div>
+  </div>
+</div>
+
+<!-- WHAT IS AURA -->
+<div class="section-full" id="how">
+  <div class="section-full-inner">
+    <div class="section-label">What is Aura</div>
+    <div class="section-headline">One message.<br>A whole team gets to work.</div>
+    <p class="section-body">
+      Most AI tools wait to be told what to do next — step by step, app by app. Aura is different. She reads your intent, builds a team of specialist agents on the spot, and puts them all to work <strong>simultaneously</strong>. By the time you blink, it's already half done.<br><br>
+      Think of her as the most capable colleague you've ever had — except she never sleeps, never forgets, and never needs a Slack reminder.
+    </p>
+
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="dot dot-r"></div>
+        <div class="dot dot-y"></div>
+        <div class="dot dot-g"></div>
+        <div class="terminal-label">Aura — live</div>
+      </div>
+      <div class="terminal-body">
+        <div><span class="t-prompt">You →</span> <span class="t-text">"Prep me for Q2 planning — pull meetings, emails, find workshop slots, draft the agenda, list my pending tasks, and send a summary."</span></div>
+        <br>
+        <div><span class="t-dim">Aura understood. Assembling your team...</span></div>
+        <br>
+        <div><span class="t-check">✓</span> <span class="t-agent">Q1 Review Agent</span> <span class="t-dim">→ scanning 47 meetings</span></div>
+        <div><span class="t-check">✓</span> <span class="t-agent">Inbox Priority Agent</span> <span class="t-dim">→ surfacing your top 10 emails</span></div>
+        <div><span class="t-check">✓</span> <span class="t-agent">Calendar Finder Agent</span> <span class="t-dim">→ finding conflict-free windows</span></div>
+        <div><span class="t-check">✓</span> <span class="t-agent">Agenda Writer Agent</span> <span class="t-dim">→ building your draft agenda</span></div>
+        <div><span class="t-check">✓</span> <span class="t-agent">Task Tracker Agent</span> <span class="t-dim">→ pulling all open items</span></div>
+        <div><span class="t-check">✓</span> <span class="t-agent">Report Compiler Agent</span> <span class="t-dim">→ assembling final summary</span></div>
+        <br>
+        <div><span class="t-flash">⚡</span> <span class="t-text">All 6 agents running in parallel. Done in 60 seconds.</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- AGENTS -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">How Aura thinks</div>
+    <div class="section-headline">Custom agents,<br>built for your exact ask.</div>
+    <p class="section-body">
+      Aura doesn't use a fixed menu of features. Every request spawns a <strong>fresh team, named and built for that specific job</strong>. No two requests get the same agents. It's not automation — it's intelligence.
+    </p>
+
+    <div class="agents-grid">
+      <div class="agent-card">
+        <span class="agent-icon">🎯</span>
+        <div class="agent-name">Churn Risk Detector</div>
+        <div class="agent-role">Tracks usage drops, missed logins, and open tickets to flag which accounts are about to leave — before they do</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">🔎</span>
+        <div class="agent-name">Buying Signal Scout</div>
+        <div class="agent-role">Scans LinkedIn activity, job postings, and news mentions to tell you exactly when a prospect is ready to buy</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">⚖️</span>
+        <div class="agent-name">Contract Risk Auditor</div>
+        <div class="agent-role">Reads your MSA line by line, flags non-standard clauses, and scores legal exposure before you sign anything</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">📉</span>
+        <div class="agent-name">Competitor Intel Tracker</div>
+        <div class="agent-role">Watches pricing pages, product changelogs, and review sites to tell you what your competitors changed this week</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">🧾</span>
+        <div class="agent-name">Invoice Reconciler</div>
+        <div class="agent-role">Matches 50 invoices to POs, flags mismatches over $500, and creates the approval batch — in 8 minutes flat</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">🧠</span>
+        <div class="agent-name">Win/Loss Pattern Finder</div>
+        <div class="agent-role">Digs through closed deals to surface why you're losing to Competitor X and what top reps do differently</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">📋</span>
+        <div class="agent-name">RFP Response Builder</div>
+        <div class="agent-role">Extracts every requirement from a 60-page RFP, cross-checks your capabilities doc, and drafts 80% of the response</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">🔬</span>
+        <div class="agent-name">Data Quality Enforcer</div>
+        <div class="agent-role">Scans your CRM for duplicate records, missing fields, and stale contacts — then writes the SQL to fix all of it</div>
+      </div>
+      <div class="agent-card">
+        <span class="agent-icon">📣</span>
+        <div class="agent-name">Launch Content Blitz Agent</div>
+        <div class="agent-role">Writes the blog post, LinkedIn copy, Product Hunt description, and user announcement email — all at once, all on-brand</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- USE CASES — ANIMATED -->
+<div class="section-full" id="usecases">
+  <div class="section-full-inner">
+    <div class="section-label">Real things people do with Aura</div>
+    <div class="section-headline">Watch Aura work.<br>Pick your scenario.</div>
+    <p class="section-body" style="margin-bottom: 36px;">
+      These aren't demos. This is exactly what happens when real people ask Aura for help — <strong>agents spin up, apps get called, results land.</strong>
+    </p>
+
+    <!-- Scenario tabs -->
+    <div class="uc-tabs" id="ucTabs">
+      <button class="uc-tab active" data-idx="0">Monday Briefing</button>
+      <button class="uc-tab" data-idx="1">Sales Call Debrief</button>
+      <button class="uc-tab" data-idx="2">Churn Alert Response</button>
+      <button class="uc-tab" data-idx="3">Competitive Sprint</button>
+      <button class="uc-tab" data-idx="4">Hiring Shortlist</button>
+    </div>
+
+    <!-- Animated execution window -->
+    <div class="uc-window">
+      <div class="uc-prompt-row">
+        <span class="uc-prompt-label">You said</span>
+        <div class="uc-prompt-text" id="ucPrompt"></div>
+      </div>
+      <div class="uc-divider"></div>
+      <div class="uc-agents-label">Aura assembled <span id="ucAgentCount">—</span> agents</div>
+      <div class="uc-stream" id="ucStream"></div>
+      <div class="uc-result" id="ucResult"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* AGENT GRID - improved */
+  .agents-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  /* USE CASES ANIMATED */
+  .uc-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .uc-tab {
+    background: transparent;
+    border: 0.5px solid var(--border);
+    color: var(--text3);
+    padding: 9px 18px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .uc-tab:hover { border-color: var(--border-hover); color: var(--text2); }
+  .uc-tab.active { border-color: var(--gold-border); color: var(--gold); background: var(--gold-dim); }
+
+  .uc-window {
+    background: var(--bg2);
+    border: 0.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .uc-prompt-row {
+    padding: 20px 24px 18px;
+    border-bottom: 0.5px solid var(--border);
+  }
+
+  .uc-prompt-label {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text3);
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .uc-prompt-text {
+    font-size: 15px;
+    color: var(--text);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1.6;
+    min-height: 24px;
+  }
+
+  .uc-divider { height: 0.5px; background: var(--border); }
+
+  .uc-agents-label {
+    padding: 14px 24px 8px;
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+
+  .uc-stream {
+    padding: 4px 24px 20px;
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    line-height: 2.0;
+    min-height: 160px;
+  }
+
+  .uc-agent-row {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: agentIn 0.3s ease forwards;
+  }
+
+  @keyframes agentIn {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .uc-agent-status { font-size: 12px; width: 16px; flex-shrink: 0; }
+  .uc-agent-name { color: var(--text2); }
+  .uc-agent-action { color: var(--text3); }
+  .uc-agent-done .uc-agent-name { color: var(--text); }
+  .uc-agent-done .uc-agent-status { color: #34c777; }
+  .uc-agent-running .uc-agent-status { color: var(--gold); }
+
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+  .uc-agent-running .uc-agent-status { animation: pulse 1s infinite; }
+
+  .uc-result {
+    border-top: 0.5px solid var(--border);
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    min-height: 60px;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+  .uc-result.visible { opacity: 1; }
+
+  .uc-result-text {
+    font-size: 13px;
+    color: var(--text2);
+    font-weight: 300;
+  }
+  .uc-result-text strong { color: var(--text); font-weight: 500; }
+
+  .uc-time-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--green-bg);
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+</style>
+
+<script>
+(function(){
+  const scenarios = [
+    {
+      tab: "Monday Briefing",
+      prompt: "\"Get me up to speed for the week — check my calendar, surface anything urgent in my inbox, pull last week's unfinished tasks, and drop a briefing in my Notion.\"",
+      agents: [
+        { name: "Calendar Scan Agent", action: "→ mapping this week's commitments + conflicts" },
+        { name: "Inbox Triage Agent", action: "→ scoring 84 unread emails by urgency" },
+        { name: "Ghost Task Hunter", action: "→ finding 9 tasks that slipped through last week" },
+        { name: "Notion Brief Writer", action: "→ drafting your Monday morning page" },
+        { name: "Priority Ranker Agent", action: "→ ordering your day by actual impact" },
+      ],
+      result: "<strong>Done in 55 seconds.</strong> Weekly brief in Notion, 3 urgent emails flagged, 9 tasks resurfaces, your Tuesday blocked for deep work.",
+      time: "55 seconds"
+    },
+    {
+      tab: "Sales Call Debrief",
+      prompt: "\"Debrief my call with Redfern Industries — transcribe it, pull out the pain points they mentioned, any objections, what I promised to send, and draft the follow-up email with relevant case studies.\"",
+      agents: [
+        { name: "Call Transcription Agent", action: "→ converting 38-min recording to text" },
+        { name: "Pain Point Extractor", action: "→ identifying 6 core problems they mentioned" },
+        { name: "Commitment Tracker Agent", action: "→ flagging 3 things you promised to send" },
+        { name: "Objection Mapper Agent", action: "→ categorizing price + timeline concerns" },
+        { name: "Case Study Matcher", action: "→ finding 2 relevant customer stories" },
+        { name: "Follow-Up Composer", action: "→ drafting personalised email with attachments" },
+      ],
+      result: "<strong>Done in 2 minutes.</strong> Full call summary, follow-up email ready to send, next steps logged to HubSpot, case studies attached.",
+      time: "2 minutes"
+    },
+    {
+      tab: "Churn Alert Response",
+      prompt: "\"Acme Corp hasn't logged in for 3 weeks and their renewal is in 30 days. Check their account health, see what support tickets they've raised, and give me a save plan with talking points.\"",
+      agents: [
+        { name: "Account Health Auditor", action: "→ pulling 60-day usage + feature adoption data" },
+        { name: "Support History Agent", action: "→ reviewing 7 open/recent tickets" },
+        { name: "Renewal Risk Scorer", action: "→ calculating churn probability: 74%" },
+        { name: "Stakeholder Mapper", action: "→ identifying the 2 decision-makers to call" },
+        { name: "Save Playbook Builder", action: "→ creating intervention script + offer options" },
+      ],
+      result: "<strong>Done in 80 seconds.</strong> Risk score: high. Save playbook ready. Call brief written. Calendar invite drafted for their CSM.",
+      time: "80 seconds"
+    },
+    {
+      tab: "Competitive Sprint",
+      prompt: "\"One of our biggest leads just mentioned they're evaluating Rival Co. Research what Rival Co launched in the last 60 days, their pricing, what customers are saying, and build me a battle card.\"",
+      agents: [
+        { name: "Product Changelog Scout", action: "→ scanning Rival Co's last 60 days of releases" },
+        { name: "Pricing Intel Agent", action: "→ capturing their current pricing page + changes" },
+        { name: "Review Sentiment Agent", action: "→ analysing 200+ G2 + Capterra reviews" },
+        { name: "Positioning Gap Finder", action: "→ identifying where you win and where you don't" },
+        { name: "Battle Card Compiler", action: "→ writing objection responses + differentiators" },
+      ],
+      result: "<strong>Done in 90 seconds.</strong> Battle card in Notion. 4 objection responses written. 3 areas where you clearly win, highlighted.",
+      time: "90 seconds"
+    },
+    {
+      tab: "Hiring Shortlist",
+      prompt: "\"Screen the 31 applications for our Head of Growth role, rank them against our requirements, flag the top 8, and draft personalised interview invite emails for each one.\"",
+      agents: [
+        { name: "Resume Parser Agent", action: "→ extracting structured data from 31 CVs" },
+        { name: "Requirements Matcher", action: "→ scoring each against 14 job criteria" },
+        { name: "Red Flag Detector", action: "→ flagging 4 gap patterns worth probing" },
+        { name: "Culture Signal Reader", action: "→ assessing tone + ambition from cover letters" },
+        { name: "Shortlist Ranker Agent", action: "→ ranking top 8 with reasoning" },
+        { name: "Invite Personaliser", action: "→ drafting 8 tailored interview invite emails" },
+      ],
+      result: "<strong>Done in 4 minutes.</strong> Top 8 ranked with scores. Interview invites written and ready. Rejection templates prepared for the rest.",
+      time: "4 minutes"
+    }
+  ];
+
+  let currentIdx = 0;
+  let animTimer = null;
+  let autoTimer = null;
+
+  const ucPrompt = document.getElementById('ucPrompt');
+  const ucStream = document.getElementById('ucStream');
+  const ucResult = document.getElementById('ucResult');
+  const ucAgentCount = document.getElementById('ucAgentCount');
+  const tabs = document.querySelectorAll('.uc-tab');
+
+  function runScenario(idx) {
+    const s = scenarios[idx];
+    clearTimeout(animTimer);
+
+    // Reset
+    ucPrompt.textContent = s.prompt;
+    ucAgentCount.textContent = s.agents.length;
+    ucStream.innerHTML = '';
+    ucResult.className = 'uc-result';
+    ucResult.innerHTML = '';
+
+    // Animate agents in with stagger
+    s.agents.forEach((agent, i) => {
+      animTimer = setTimeout(() => {
+        const row = document.createElement('div');
+        row.className = 'uc-agent-row uc-agent-running';
+        row.style.animationDelay = '0ms';
+        row.innerHTML = `<span class="uc-agent-status">◉</span><span class="uc-agent-name">${agent.name}</span><span class="uc-agent-action">${agent.action}</span>`;
+        ucStream.appendChild(row);
+
+        // Mark done after a moment
+        setTimeout(() => {
+          row.className = 'uc-agent-row uc-agent-done';
+          row.querySelector('.uc-agent-status').textContent = '✓';
+        }, 600 + Math.random() * 400);
+
+        // Show result after last agent
+        if (i === s.agents.length - 1) {
+          setTimeout(() => {
+            ucResult.innerHTML = `<div class="uc-result-text">${s.result}</div><div class="uc-time-badge">⚡ ${s.time}</div>`;
+            ucResult.classList.add('visible');
+          }, 1200);
+        }
+      }, i * 280);
+    });
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const idx = parseInt(tab.dataset.idx);
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      currentIdx = idx;
+      clearTimeout(autoTimer);
+      runScenario(idx);
+      scheduleAuto();
+    });
+  });
+
+  function scheduleAuto() {
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(() => {
+      currentIdx = (currentIdx + 1) % scenarios.length;
+      tabs.forEach(t => t.classList.remove('active'));
+      tabs[currentIdx].classList.add('active');
+      runScenario(currentIdx);
+      scheduleAuto();
+    }, 8000);
+  }
+
+  // Intersection observer — start when visible
+  const win = document.getElementById('usecases');
+  const obs = new IntersectionObserver((entries) => {
+    if (entries[0].isIntersecting) {
+      runScenario(0);
+      scheduleAuto();
+      obs.disconnect();
+    }
+  }, { threshold: 0.2 });
+  if (win) obs.observe(win);
+})();
+</script>
+
+<!-- BEFORE / AFTER -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">The difference</div>
+    <div class="section-headline">What you do now<br>vs. what you do with Aura.</div>
+
+    <div class="compare-grid">
+      <div class="compare-card before">
+        <div class="compare-header before">Without Aura</div>
+        <ul class="compare-list">
+          <li><span class="icon">✗</span> 6 separate requests to different tools</li>
+          <li><span class="icon">✗</span> 30–45 minutes switching between apps</li>
+          <li><span class="icon">✗</span> Things falling through the cracks</li>
+          <li><span class="icon">✗</span> Manually compiling scattered info</li>
+          <li><span class="icon">✗</span> Back-and-forth just to find the right time</li>
+          <li><span class="icon">✗</span> You're managing the tools, not the work</li>
+        </ul>
+      </div>
+      <div class="compare-card after">
+        <div class="compare-header after">With Aura</div>
+        <ul class="compare-list">
+          <li><span class="icon">✓</span> One message. Everything handled.</li>
+          <li><span class="icon">✓</span> 60 seconds, not 60 minutes</li>
+          <li><span class="icon">✓</span> Every thread tied up automatically</li>
+          <li><span class="icon">✓</span> A complete picture, instantly ready</li>
+          <li><span class="icon">✓</span> Scheduling done without asking you twice</li>
+          <li><span class="icon">✓</span> You stay focused on what actually matters</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="section-full">
+  <div class="section-full-inner">
+    <div class="section-label">Under the hood</div>
+    <div class="section-headline">Everything Aura<br>does quietly for you.</div>
+    <div class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">⚡</div>
+        <div class="feature-title">Parallel execution</div>
+        <div class="feature-desc">Multiple agents work simultaneously — not one after another. Your results arrive in seconds, not minutes.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🤖</div>
+        <div class="feature-title">Dynamic agent creation</div>
+        <div class="feature-desc">Aura builds a custom specialist team for every unique request. No two tasks get the same setup.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔌</div>
+        <div class="feature-title">500+ app connections</div>
+        <div class="feature-desc">Gmail, Notion, Slack, Google Calendar, GitHub, HubSpot, and hundreds more — already connected.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🧠</div>
+        <div class="feature-title">Intent-first thinking</div>
+        <div class="feature-desc">Aura understands what you mean, not just what you typed. No 20-question back-and-forth.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">🔄</div>
+        <div class="feature-title">Skill memory</div>
+        <div class="feature-desc">Build your own workflows once. Aura finds and reuses them automatically when they're relevant.</div>
+      </div>
+      <div class="feature-item">
+        <div class="feature-icon">📱</div>
+        <div class="feature-title">Works everywhere</div>
+        <div class="feature-desc">Web, Telegram, WhatsApp, Teams — same Aura, any surface, any device.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 40px;">
+      <div class="section-label" style="margin-bottom: 16px;">Works with tools you already use</div>
+      <div class="apps-row">
+        <div class="app-pill">Gmail</div>
+        <div class="app-pill">Google Calendar</div>
+        <div class="app-pill">Notion</div>
+        <div class="app-pill">Slack</div>
+        <div class="app-pill">HubSpot</div>
+        <div class="app-pill">GitHub</div>
+        <div class="app-pill">Trello</div>
+        <div class="app-pill">Jira</div>
+        <div class="app-pill">Salesforce</div>
+        <div class="app-pill">Google Drive</div>
+        <div class="app-pill">Outlook</div>
+        <div class="app-pill">WhatsApp</div>
+        <div class="app-pill">Telegram</div>
+        <div class="app-pill">Teams</div>
+        <div class="app-pill">+ 486 more</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL CTA -->
+<div class="final-cta" id="cta">
+  <div class="hero-badge">Ready when you are</div>
+  <div style="margin-top: 24px;"></div>
+  <div class="final-headline">Stop managing.<br>Start <span>deciding.</span></div>
+  <p class="final-sub">Aura quietly manages the chaos, so you can focus on what actually matters.</p>
+  <div class="cta-row">
+    <a href="#" class="btn-primary">Request early access →</a>
+    <a href="#how" class="btn-ghost">See how it works</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Aura<span>.</span></div>
+  <div class="footer-note">Calm presence. Relentless execution.</div>
+  <div class="footer-note">© 2026 Aura Agent</div>
+</footer>
+
+</body>
+</html>
